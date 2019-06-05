@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "138e4659-bdb3-4816-abe4-52af65c8c19b",
+		"name": "TestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mock Test 200",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "571bddad-23b5-45e8-9f7a-04a97a9603e8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Test Compose\");",
+							"});",
+							"",
+							"",
+							"//checking the performance of the test , in this example verifying it for 400 ms , and it can be changed.",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/accounts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Test API ex",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/accounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 02 Jun 2019 06:29:38 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1af-CztD2SabXWWQurO8aC6YVJQ576E\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Length",
+							"value": "329"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accounts\":[\n    \t{\n    \t\"subscriptionName\":\"Test Subscription\",\n    \t\"accountName\":\"Test Account Name\",\n    \t\"compositename\":\"Test Compose\"\n    }\n    ],\n    \n    \"selectedAccountIndex\":0\n}\n"
+				}
+			]
+		}
+	]
+}
